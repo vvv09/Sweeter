@@ -64,13 +64,14 @@
         </div>
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <#if !isRegisterForm><a href="/registration">Add new user</a></#if>
-        <button class="btn btn-primary" type="submit"><#if isRegisterForm>Create<#else>Sign In</#if></button>
+        <button class="btn btn-primary" type="submit"><#if isRegisterForm>Create<#else>LogIn</#if></button>
     </form>
 </#macro>
 
 <#macro logout>
+    <#include "security.ftl" >
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button class="btn btn-primary" type="submit">Sign Out</button>
+        <button class="btn btn-primary" type="submit"><#if user??>LogOut<#else>LogIn</#if></button>
     </form>
 </#macro>
